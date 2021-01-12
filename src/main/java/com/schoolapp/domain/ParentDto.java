@@ -9,6 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 public class ParentDto {
+    private Long id;
     private String name;
     private String firstName;
     private String secondName;

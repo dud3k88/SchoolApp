@@ -17,6 +17,7 @@ public class ParentMapper {
     public List<ParentDto> mapToParentDtoList(final List<Parent> parentList) {
         return parentList.stream()
                 .map(parent -> new ParentDto(
+                        parent.getId(),
                         parent.getName(),
                         parent.getFirstName(),
                         parent.getSecondName(),
@@ -27,6 +28,7 @@ public class ParentMapper {
 
     public ParentDto mapToParentDto(final Parent parent) {
         return new ParentDto(
+                parent.getId(),
                 parent.getName(),
                 parent.getFirstName(),
                 parent.getSecondName(),
