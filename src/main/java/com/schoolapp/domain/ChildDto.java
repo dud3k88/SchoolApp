@@ -11,6 +11,5 @@ public class ChildDto {
     private String firstName;
     private String secondName;
     private int yearOfBirth;
-    private Long parentId;
     private List<Group> groupDto;
 }

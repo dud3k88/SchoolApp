@@ -1,9 +1,7 @@
 package com.schoolapp.service;
 
-import com.schoolapp.domain.Child;
-import com.schoolapp.domain.Group;
-import com.schoolapp.domain.Localization;
-import com.schoolapp.domain.Parent;
+import com.schoolapp.domain.*;
+import com.schoolapp.mapper.ChildMapper;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,6 +23,8 @@ public class ChildDbServiceTestSuite {
     private LocalizationDbService localizationService;
     @Autowired
     private GroupDbService groupDbService;
+    @Autowired
+    private ChildMapper mapper;
 
     @Test
     public void delete() {
@@ -50,7 +51,7 @@ public class ChildDbServiceTestSuite {
         Assert.assertEquals(child1.getSecondName(), childService.getChild(child1.getId()).getSecondName());
 
         //CleanUp
-        childService.deleteChild(child1.getId());
+        //childService.deleteChild(child1.getId());
     }
 
     @Test

@@ -17,7 +17,6 @@ public class ChildMapper {
                         child.getFirstName(),
                         child.getSecondName(),
                         child.getYearOfBirth(),
-                        child.getParent().getId(),
                         child.getChildrenGroups()))
                 .collect(Collectors.toList());
     }
@@ -27,7 +26,6 @@ public class ChildMapper {
                 child.getFirstName(),
                 child.getSecondName(),
                 child.getYearOfBirth(),
-                child.getParentId(),
                 child.getChildrenGroups());
     }
 
