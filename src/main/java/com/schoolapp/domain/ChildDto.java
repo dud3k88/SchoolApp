@@ -8,6 +8,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 public class ChildDto {
+    private Long id;
     private String firstName;
     private String secondName;
     private int yearOfBirth;

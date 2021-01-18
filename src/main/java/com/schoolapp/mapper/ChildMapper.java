@@ -14,6 +14,7 @@ public class ChildMapper {
     public List<ChildDto> mapToChildListDto(List<Child> children) {
         return children.stream()
                 .map(child -> new ChildDto(
+                        child.getId(),
                         child.getFirstName(),
                         child.getSecondName(),
                         child.getYearOfBirth(),
@@ -23,6 +24,7 @@ public class ChildMapper {
 
     public ChildDto mapToChildDto(final Child child) {
         return new ChildDto(
+                child.getId(),
                 child.getFirstName(),
                 child.getSecondName(),
                 child.getYearOfBirth(),
