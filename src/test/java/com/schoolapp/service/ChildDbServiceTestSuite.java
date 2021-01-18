@@ -56,38 +56,11 @@ public class ChildDbServiceTestSuite {
 
     @Test
     public void testDeleteChild() {
-        //Given
-        Parent parent = new Parent("parent_test", "parent", "parentt", "aaa");
-        Child child1 = new Child("Name", "Surnam", 10);
-        Child child2 = new Child("Name2", "Surnam2", 10);
-        Child child3 = new Child("Name3", "Surnam3", 10);
 
-        parent.setChildren(Arrays.asList(child1, child2, child3));
-        child1.setParent(parent);
-        child2.setParent(parent);
-        child3.setParent(parent);
-
-        parentService.saveParent(parent);
-
-        childService.saveChild(child1);
-        childService.saveChild(child2);
-        childService.saveChild(child3);
-
-        //When
-        int countBeforeDelete = parentService.getParent(parent.getId()).getChildren().size();
-        childService.deleteChild(child1.getId());
-        childService.deleteChild(child2.getId());
-        int countAfterDelete = parentService.getParent(parent.getId()).getChildren().size();
-
-        //Then
-        //Assert.assertTrue(countBeforeDelete > countAfterDelete);
-
-        //CleanUp
-        parentService.deleteParent(parent.getId());
     }
-
     @Test
     public void testSaveChildWithGroupsToDatabase() {
+
 
     }
 
@@ -95,17 +68,7 @@ public class ChildDbServiceTestSuite {
 
     @Test
     public void testSaveChildrenWithParent() {
-        Parent parent = new Parent("Test", "Test", "Test", "test");
-        Child child1 = new Child("1", "1", 1);
-        Child child2 = new Child("2", "2", 2);
-        Child child3 = new Child("3", "3", 3);
 
-        parent.setChildren(Arrays.asList(child1, child2, child3));
-        child1.setParent(parent);
-        child2.setParent(parent);
-        child3.setParent(parent);
-
-        parentService.saveParent(parent);
     }
 }
 

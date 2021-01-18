@@ -41,10 +41,7 @@ public class Child {
     private Long parentId;
 
    @ManyToMany(mappedBy = "children",
-   cascade = {
-           CascadeType.PERSIST,
-           CascadeType.DETACH
-   })
+   cascade = CascadeType.ALL)
     private List<Group> childrenGroups;
 
     public Child(String firstName, String secondName, int yearOfBirth) {

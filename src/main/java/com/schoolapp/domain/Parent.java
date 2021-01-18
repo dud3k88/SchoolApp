@@ -36,9 +36,7 @@ public class Parent {
     @OneToMany(
             targetEntity = Child.class,
             mappedBy = "parent",
-            cascade = {
-                    CascadeType.REMOVE,
-                    CascadeType.PERSIST},
+            cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
     )
     private List<Child> children = new ArrayList<>();

@@ -37,7 +37,7 @@ public class ParentController {
         service.deleteParent(parentId);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/createParent", consumes = APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "/createParent")
     public void createParent(@RequestBody ParentDto parentDto) {
         service.saveParent(mapper.mapToParent(parentDto));
     }
