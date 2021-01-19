@@ -33,9 +33,9 @@ public class ParentDbServiceTestSuite {
     @Test
     public void savaChild() {
         Child child = new Child("Test", "test", 2010);
-        Parent parent = service.getParent(238L);
+        Parent parent = service.getParent(248L);
 
-        parent.setChildren(Arrays.asList(child));
+        parent.getChildren().add(child);
         child.setParent(parent);
 
         service.saveParent(parent);
