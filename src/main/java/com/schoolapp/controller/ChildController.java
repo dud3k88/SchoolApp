@@ -21,8 +21,8 @@ public class ChildController {
     private ChildMapper childMapper;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getChildren")
-    public List<ChildDto> getAllChildren() {
-        return childMapper.mapToChildListDto(service.getAllChildren());
+    public List<Child> getAllChildren() {
+        return service.getAllChildren();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getChild")
