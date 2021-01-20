@@ -23,8 +23,8 @@ public class ParentController {
     private ParentMapper mapper;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getParents")
-    public List<ParentDto> getAllParents() {
-        return mapper.mapToParentDtoList(service.getAllParents());
+    public List<Parent> getAllParents() {
+        return service.getAllParents();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getParent")
