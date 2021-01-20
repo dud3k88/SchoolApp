@@ -13,5 +13,4 @@ public class ChildDto {
     private String secondName;
     private int yearOfBirth;
     private ParentDto parentDto;
-    private GroupDto groupDto;
 }

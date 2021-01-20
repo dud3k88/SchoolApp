@@ -23,9 +23,7 @@ public class ChildMapper {
                         t.getFirstName(),
                         t.getSecondName(),
                         t.getYearOfBirth(),
-                        parentMapper.mapToParentDto(t.getParent()),
-                        groupMapper.mapToGroupDto(t.getGroup()))
-                        )
+                        parentMapper.mapToParentDto(t.getParent())))
                 .collect(Collectors.toList());
     }
 
@@ -35,8 +33,7 @@ public class ChildMapper {
                 child.getFirstName(),
                 child.getSecondName(),
                 child.getYearOfBirth(),
-                parentMapper.mapToParentDto(child.getParent()),
-                groupMapper.mapToGroupDto(child.getGroup()));
+                parentMapper.mapToParentDto(child.getParent()));
     }
 
     public Child mapToChild(ChildDto childDto) {
