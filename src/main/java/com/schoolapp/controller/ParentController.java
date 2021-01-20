@@ -23,8 +23,8 @@ public class ParentController {
     private ParentMapper mapper;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getParents")
-    public List<Parent> getAllParents() {
-        return service.getAllParents();
+    public List<ParentDto> getAllParents() {
+        return mapper.mapToParentDtoList(service.getAllParents());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getParent")
@@ -38,8 +38,8 @@ public class ParentController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/createParent", consumes = APPLICATION_JSON_VALUE)
-    public void createParent(@RequestBody Parent parentDto) {
-        service.saveParent(parentDto);
+    public void createParent(@RequestBody ParentDto parentDto) {
+        service.saveParent(mapper.mapToParent(parentDto));
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/updateParent")
