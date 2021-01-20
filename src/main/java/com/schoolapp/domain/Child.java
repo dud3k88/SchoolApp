@@ -22,9 +22,7 @@ public class Child {
     @ManyToOne
     @JoinColumn(name = "parent_children")
     private Parent parent;
-    @ManyToOne
-    @JoinColumn(name = "child_group")
-    private Group group;
+
 
     public Child(String firstName, String secondName, int yearOfBirth, Parent parent) {
         this.firstName = firstName;
