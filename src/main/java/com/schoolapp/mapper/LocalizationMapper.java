@@ -2,7 +2,6 @@ package com.schoolapp.mapper;
 
 import com.schoolapp.domain.Localization;
 import com.schoolapp.domain.LocalizationDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,21 +11,21 @@ import java.util.stream.Collectors;
 public class LocalizationMapper {
     public List<LocalizationDto> mapToLocalizationDto(List<Localization> localizationList) {
         return localizationList.stream()
-                .map(localization -> new LocalizationDto(
-                        localization.getLocalizationName(),
-                        localization.getGroups()))
+                .map(t -> new LocalizationDto(
+                        t.getId(),
+                        t.getLocalizationName()))
                 .collect(Collectors.toList());
     }
 
     public LocalizationDto mapToLocalizationDto(final Localization localization) {
         return new LocalizationDto(
-                localization.getLocalizationName(),
-                localization.getGroups());
+                localization.getId(),
+                localization.getLocalizationName());
     }
 
     public Localization mapToLocalization(final LocalizationDto localizationDto) {
         return new Localization(
-                localizationDto.getLocalizationName()
-        );
+                localizationDto.getId(),
+                localizationDto.getLocalizationName());
     }
 }

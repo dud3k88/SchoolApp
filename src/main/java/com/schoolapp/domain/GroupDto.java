@@ -11,10 +11,11 @@ import java.util.List;
 @Setter
 
 public class GroupDto {
+    private Long id;
     private String groupName;
     private int minYearOfBirth;
     private int maxYearOfBirth;
-    private LocalizationDto localization;
+    private LocalizationDto localizationDto;
 
 
 }

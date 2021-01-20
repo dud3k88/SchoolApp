@@ -2,13 +2,14 @@ package com.schoolapp.controller;
 
 import com.schoolapp.domain.Child;
 import com.schoolapp.domain.ChildDto;
-import com.schoolapp.domain.Parent;
 import com.schoolapp.mapper.ChildMapper;
 import com.schoolapp.service.ChildDbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/school/children")
@@ -17,21 +18,21 @@ public class ChildController {
     private ChildDbService service;
 
     @Autowired
-    private ChildMapper mapper;
+    private ChildMapper childMapper;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getChildren")
     public List<ChildDto> getAllChildren() {
-        return mapper.mapToChildListDto(service.getAllChildren());
+        return childMapper.mapToChildListDto(service.getAllChildren());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getChild")
     public ChildDto getChild(@RequestParam Long childId) {
-        return mapper.mapToChildDto(service.getChild(childId));
+        return childMapper.mapToChildDto(service.getChild(childId));
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/createChild")
+    @RequestMapping(method = RequestMethod.POST, value = "/createChild", consumes = APPLICATION_JSON_VALUE)
     public void createChild(@RequestBody ChildDto childDto) {
-        service.saveChild(mapper.mapToChild(childDto));
+        service.saveChild(childMapper.mapToChild(childDto));
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/deleteChild")
@@ -41,6 +42,6 @@ public class ChildController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/updateChild")
     public ChildDto updateChild(@RequestBody ChildDto childDto) {
-        return mapper.mapToChildDto(service.saveChild(mapper.mapToChild(childDto)));
+        return childMapper.mapToChildDto(service.saveChild(childMapper.mapToChild(childDto)));
     }
 }

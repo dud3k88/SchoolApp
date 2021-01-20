@@ -1,8 +1,8 @@
 package com.schoolapp.mapper;
 
-
 import com.schoolapp.domain.Child;
 import com.schoolapp.domain.ChildDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -11,14 +11,17 @@ import java.util.stream.Collectors;
 @Component
 public class ChildMapper {
 
+    @Autowired
+    private ParentMapper parentMapper;
+
     public List<ChildDto> mapToChildListDto(List<Child> children) {
         return children.stream()
-                .map(child -> new ChildDto(
-                        child.getId(),
-                        child.getFirstName(),
-                        child.getSecondName(),
-                        child.getYearOfBirth(),
-                        child.getChildrenGroups()))
+                .map(t -> new ChildDto(
+                        t.getId(),
+                        t.getFirstName(),
+                        t.getSecondName(),
+                        t.getYearOfBirth(),
+                        parentMapper.mapToParentDto(t.getParent())))
                 .collect(Collectors.toList());
     }
 
@@ -28,13 +31,14 @@ public class ChildMapper {
                 child.getFirstName(),
                 child.getSecondName(),
                 child.getYearOfBirth(),
-                child.getChildrenGroups());
+                parentMapper.mapToParentDto(child.getParent()));
     }
 
-    public Child mapToChild (ChildDto childDto) {
+    public Child mapToChild(ChildDto childDto) {
         return new Child(
                 childDto.getFirstName(),
                 childDto.getSecondName(),
-                childDto.getYearOfBirth());
+                childDto.getYearOfBirth(),
+                parentMapper.mapToParent(childDto.getParentDto()));
     }
 }

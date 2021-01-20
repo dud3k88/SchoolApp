@@ -16,16 +16,18 @@ public class GroupMapper {
 
     public List<GroupDto> mapToGroupDto(final List<Group> groupList) {
         return groupList.stream()
-                .map(group -> new GroupDto(
-                        group.getGroupName(),
-                        group.getMinYearOfBirth(),
-                        group.getMaxYearOfBirth(),
-                        localizationMapper.mapToLocalizationDto(group.getLocalization())))
+                .map(t -> new GroupDto(
+                        t.getId(),
+                        t.getGroupName(),
+                        t.getMinYearOfBirth(),
+                        t.getMaxYearOfBirth(),
+                        localizationMapper.mapToLocalizationDto(t.getLocalization())))
                 .collect(Collectors.toList());
     }
 
     public GroupDto mapToGroupDto(final Group group) {
         return new GroupDto(
+                group.getId(),
                 group.getGroupName(),
                 group.getMinYearOfBirth(),
                 group.getMaxYearOfBirth(),
@@ -36,7 +38,7 @@ public class GroupMapper {
         return new Group(
                 groupDto.getGroupName(),
                 groupDto.getMinYearOfBirth(),
-                groupDto.getMaxYearOfBirth());
+                groupDto.getMaxYearOfBirth(),
+                localizationMapper.mapToLocalization(groupDto.getLocalizationDto()));
     }
-
 }

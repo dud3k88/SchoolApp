@@ -4,14 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 public class LocalizationDto {
+    private Long id;
     private String localizationName;
-    private List<Group> groupList;
 
 }

@@ -2,17 +2,14 @@ package com.schoolapp.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-import java.util.ArrayList;
-import java.util.List;
+import lombok.Setter;
 
 @AllArgsConstructor
 @Getter
+@Setter
 public class ParentDto {
     private Long id;
-    private String name;
     private String firstName;
     private String secondName;
     private String emailAddress;
-    private List<ChildDto> childDtoList;
 }

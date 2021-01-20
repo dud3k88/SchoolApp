@@ -18,21 +18,21 @@ public class GroupController {
     private GroupDbService service;
 
     @Autowired
-    private GroupMapper mapper;
+    private GroupMapper groupMapper;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getGroups")
     public List<GroupDto> getGroups() {
-        return mapper.mapToGroupDto(service.getAllGroups());
+        return groupMapper.mapToGroupDto(service.getAllGroups());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getGroup")
-    public Group getGroup(@RequestParam Long groupId) {
-       return service.getGroupById(groupId);
+    public GroupDto getGroup(@RequestParam Long groupId) {
+       return groupMapper.mapToGroupDto(service.getGroupById(groupId));
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/createGroup", consumes = APPLICATION_JSON_VALUE)
-    public void createGroup(@RequestBody Group group) {
-        service.saveGroup(group);
+    public void createGroup(@RequestBody GroupDto groupDto) {
+        service.saveGroup(groupMapper.mapToGroup(groupDto));
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/deleteGroup")
@@ -41,8 +41,8 @@ public class GroupController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/updateGroup")
-    public Group updateGroup(@RequestBody Group group) {
-        return service.saveGroup(group);
+    public GroupDto updateGroup(@RequestBody GroupDto groupDto) {
+        return groupMapper.mapToGroupDto(service.saveGroup(groupMapper.mapToGroup(groupDto)));
     }
 
 
