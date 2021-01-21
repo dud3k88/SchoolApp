@@ -20,7 +20,7 @@ public class Group {
     private String groupName;
     private int minYearOfBirth;
     private int maxYearOfBirth;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "Localization_groups")
     private Localization localization;
 
