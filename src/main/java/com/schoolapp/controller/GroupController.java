@@ -34,8 +34,8 @@ public class GroupController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/createGroup", consumes = APPLICATION_JSON_VALUE)
-    public void createGroup(@RequestBody GroupDto groupDto) {
-        service.saveGroup(groupMapper.mapToGroup(groupDto));
+    public void createGroup(@RequestBody Group group) {
+        service.saveGroup(group);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/deleteGroup")
