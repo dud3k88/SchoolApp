@@ -36,8 +36,8 @@ public class LocalizationController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/createLocalization", consumes = APPLICATION_JSON_VALUE)
-    public void createLocalization(@RequestBody Localization localization) {
-        service.saveLocalization(localization);
+    public void createLocalization(@RequestBody LocalizationDto localizationDto) {
+        service.saveLocalization(localizationMapper.mapToLocalization(localizationDto));
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/updateLocalization")
