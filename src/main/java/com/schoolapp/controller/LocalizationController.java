@@ -1,5 +1,6 @@
 package com.schoolapp.controller;
 
+import com.schoolapp.domain.Localization;
 import com.schoolapp.domain.LocalizationDto;
 import com.schoolapp.mapper.LocalizationMapper;
 import com.schoolapp.service.LocalizationDbService;
@@ -35,8 +36,8 @@ public class LocalizationController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/createLocalization", consumes = APPLICATION_JSON_VALUE)
-    public void createLocalization(@RequestBody LocalizationDto localizationDto) {
-        service.saveLocalization(localizationMapper.mapToLocalization(localizationDto));
+    public void createLocalization(@RequestBody Localization localization) {
+        service.saveLocalization(localization);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/updateLocalization")
