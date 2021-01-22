@@ -24,12 +24,5 @@ public class Group {
     @JoinColumn(name = "Localization_groups")
     private Localization localization;
 
-    public Group(Long id, String groupName, int minYearOfBirth, int maxYearOfBirth, Localization localization) {
-        this.id = id;
-        this.groupName = groupName;
-        this.minYearOfBirth = minYearOfBirth;
-        this.maxYearOfBirth = maxYearOfBirth;
-        this.localization = localization;
-    }
 }
 
