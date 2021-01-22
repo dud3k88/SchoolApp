@@ -4,6 +4,7 @@ import com.schoolapp.domain.Group;
 import com.schoolapp.domain.GroupDto;
 import com.schoolapp.mapper.GroupMapper;
 import com.schoolapp.service.GroupDbService;
+import com.schoolapp.service.LocalizationDbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,8 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class GroupController {
     @Autowired
     private GroupDbService service;
+    @Autowired
+    private LocalizationDbService localizationDbService;
 
     @Autowired
     private GroupMapper groupMapper;
