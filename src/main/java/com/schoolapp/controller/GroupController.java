@@ -24,8 +24,8 @@ public class GroupController {
     private GroupMapper groupMapper;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getGroups")
-    public List<GroupDto> getGroups() {
-        return groupMapper.mapToGroupDto(service.getAllGroups());
+    public List<Group> getGroups() {
+        return service.getAllGroups();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getGroup")
@@ -34,8 +34,8 @@ public class GroupController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/createGroup", consumes = APPLICATION_JSON_VALUE)
-    public void createGroup(@RequestBody GroupDto groupDto) {
-        service.saveGroup(groupMapper.mapToGroup(groupDto));
+    public void createGroup(@RequestBody Group groupDto) {
+        service.saveGroup(groupDto);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/deleteGroup")

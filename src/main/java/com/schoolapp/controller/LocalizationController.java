@@ -21,8 +21,8 @@ public class LocalizationController {
     private LocalizationMapper localizationMapper;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getLocalizations")
-    public List<LocalizationDto> getLocalizations() {
-       return localizationMapper.mapToLocalizationDto(service.getAllLocalization());
+    public List<Localization> getLocalizations() {
+       return service.getAllLocalization();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getLocalization")
@@ -36,8 +36,8 @@ public class LocalizationController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/createLocalization", consumes = APPLICATION_JSON_VALUE)
-    public void createLocalization(@RequestBody LocalizationDto localizationDto) {
-        service.saveLocalization(localizationMapper.mapToLocalization(localizationDto));
+    public void createLocalization(@RequestBody Localization localizationDto) {
+        service.saveLocalization(localizationDto);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/updateLocalization")
