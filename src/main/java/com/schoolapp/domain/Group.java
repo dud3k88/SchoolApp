@@ -24,5 +24,11 @@ public class Group {
     @JoinColumn(name = "Localization_groups")
     private Localization localization;
 
+    public Group(String groupName, int minYearOfBirth, int maxYearOfBirth, Localization localization) {
+        this.groupName = groupName;
+        this.minYearOfBirth = minYearOfBirth;
+        this.maxYearOfBirth = maxYearOfBirth;
+        this.localization = localization;
+    }
 }
 

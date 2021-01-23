@@ -17,7 +17,6 @@ public class GroupMapper {
     public List<GroupDto> mapToGroupDto(final List<Group> groupList) {
         return groupList.stream()
                 .map(t -> new GroupDto(
-                        t.getId(),
                         t.getGroupName(),
                         t.getMinYearOfBirth(),
                         t.getMaxYearOfBirth(),
@@ -27,7 +26,6 @@ public class GroupMapper {
 
     public GroupDto mapToGroupDto(final Group group) {
         return new GroupDto(
-                group.getId(),
                 group.getGroupName(),
                 group.getMinYearOfBirth(),
                 group.getMaxYearOfBirth(),
@@ -36,7 +34,6 @@ public class GroupMapper {
 
     public Group mapToGroup(final GroupDto groupDto) {
         return new Group(
-                groupDto.getId(),
                 groupDto.getGroupName(),
                 groupDto.getMinYearOfBirth(),
                 groupDto.getMaxYearOfBirth(),
