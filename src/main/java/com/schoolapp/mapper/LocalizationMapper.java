@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class LocalizationMapper {
-    public List<LocalizationDto> mapToLocalizationDtoList(final List<Localization> localizationList) {
+    public List<LocalizationDto> mapToLocalizationDtoList(List<Localization> localizationList) {
         return localizationList.stream()
                 .map(t -> new LocalizationDto(
                         t.getId(),
@@ -17,13 +17,13 @@ public class LocalizationMapper {
                 .collect(Collectors.toList());
     }
 
-    public LocalizationDto mapToLocalizationDto(final Localization localization) {
+    public LocalizationDto mapToLocalizationDto(Localization localization) {
         return new LocalizationDto(
                 localization.getId(),
                 localization.getLocalizationName());
     }
 
-    public Localization mapToLocalization(final LocalizationDto localizationDto) {
+    public Localization mapToLocalization(LocalizationDto localizationDto) {
         return new Localization(
                 localizationDto.getId(),
                 localizationDto.getLocalizationName());

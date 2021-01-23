@@ -14,7 +14,7 @@ public class GroupMapper {
     @Autowired
     private LocalizationMapper localizationMapper;
 
-    public List<GroupDto> mapToGroupDto(final List<Group> groupList) {
+    public List<GroupDto> mapToGroupDto(List<Group> groupList) {
         return groupList.stream()
                 .map(t -> new GroupDto(
                         t.getId(),
@@ -25,7 +25,7 @@ public class GroupMapper {
                 .collect(Collectors.toList());
     }
 
-    public GroupDto mapToGroupDto(final Group group) {
+    public GroupDto mapToGroupDto(Group group) {
         return new GroupDto(
                 group.getId(),
                 group.getGroupName(),
@@ -34,7 +34,7 @@ public class GroupMapper {
                 localizationMapper.mapToLocalizationDto(group.getLocalization()));
     }
 
-    public Group mapToGroup(final GroupDto groupDto) {
+    public Group mapToGroup(GroupDto groupDto) {
         return new Group(
                 groupDto.getId(),
                 groupDto.getGroupName(),
