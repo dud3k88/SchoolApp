@@ -15,5 +15,5 @@ public class GroupDto {
     private String groupName;
     private int minYearOfBirth;
     private int maxYearOfBirth;
-    private LocalizationDto localizationDto;
+    private Localization localization;
 }

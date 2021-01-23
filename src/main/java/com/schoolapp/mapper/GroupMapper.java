@@ -21,7 +21,7 @@ public class GroupMapper {
                         t.getGroupName(),
                         t.getMinYearOfBirth(),
                         t.getMaxYearOfBirth(),
-                        localizationMapper.mapToLocalizationDto(t.getLocalization())))
+                        t.getLocalization()))
                 .collect(Collectors.toList());
     }
 
@@ -31,7 +31,7 @@ public class GroupMapper {
                 group.getGroupName(),
                 group.getMinYearOfBirth(),
                 group.getMaxYearOfBirth(),
-                localizationMapper.mapToLocalizationDto(group.getLocalization()));
+                group.getLocalization());
     }
 
     public Group mapToGroup(GroupDto groupDto) {
@@ -40,6 +40,6 @@ public class GroupMapper {
                 groupDto.getGroupName(),
                 groupDto.getMinYearOfBirth(),
                 groupDto.getMaxYearOfBirth(),
-                localizationMapper.mapToLocalization(groupDto.getLocalizationDto()));
+                groupDto.getLocalization());
     }
 }
