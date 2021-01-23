@@ -17,8 +17,6 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class GroupController {
     @Autowired
     private GroupDbService service;
-    @Autowired
-    private LocalizationDbService localizationDbService;
 
     @Autowired
     private GroupMapper groupMapper;
