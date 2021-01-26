@@ -40,9 +40,11 @@ public class ChildMapper {
 
     public Child mapToChild(ChildDto childDto) {
         return new Child(
+                childDto.getId(),
                 childDto.getFirstName(),
                 childDto.getSecondName(),
                 childDto.getYearOfBirth(),
-                childDto.getParent());
+                childDto.getParent(),
+                childDto.getGroup());
     }
 }
