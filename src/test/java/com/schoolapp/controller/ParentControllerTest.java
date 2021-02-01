@@ -78,7 +78,8 @@ public class ParentControllerTest {
     public void shouldDeleteParentDto() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders
-                .delete("/school/parents/deleteParent/{parentId}", 1))
+                .delete("/school/parents/deleteParent", 1)
+                .param("parentId", "1"))
                 .andExpect(status().isOk());
     }
 

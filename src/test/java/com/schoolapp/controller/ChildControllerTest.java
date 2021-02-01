@@ -93,7 +93,8 @@ public class ChildControllerTest {
     public void shouldDeleteChildDto() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders
-                .delete("/school/children/deleteChild/{childId}", 1))
+                .delete("/school/children/deleteChild", 1)
+                .param("childId", "1"))
                 .andExpect(status().isOk());
     }
 

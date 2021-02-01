@@ -36,8 +36,8 @@ public class GroupController {
         service.saveGroup(groupMapper.mapToGroup(groupDto));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteGroup/{groupId}")
-    public void deleteGroup(@PathVariable("groupId") Long groupId) {
+    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteGroup")
+    public void deleteGroup(@RequestParam Long groupId) {
         service.deleteGroup(groupId);
     }
 

@@ -80,7 +80,8 @@ public class LocalizationControllerTest {
     public void shouldDeleteLocalizationDto() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders
-        .delete("/school/localization/deleteLocalization/{localizationId}", 1))
+                .delete("/school/localization/deleteLocalization", 1)
+                .param("localizationId", "1"))
                 .andExpect(status().isOk());
     }
 

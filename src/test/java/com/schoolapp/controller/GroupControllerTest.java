@@ -86,7 +86,8 @@ public class GroupControllerTest {
     public void shouldDeleteGroupDto() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders
-                .delete("/school/groups/deleteGroup/{groupId}", 1))
+                .delete("/school/groups/deleteGroup", 1)
+                .param("groupId", "1"))
                 .andExpect(status().isOk());
     }
 
