@@ -32,8 +32,8 @@ public class ParentController {
         return mapper.mapToParentDto(service.getParent(parentId));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteParent")
-    public void deleteParent(@RequestParam Long parentId) {
+    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteParent/{parentId}")
+    public void deleteParent(@PathVariable("parentId") Long parentId) {
         service.deleteParent(parentId);
     }
 

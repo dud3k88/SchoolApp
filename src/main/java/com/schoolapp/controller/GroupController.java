@@ -23,7 +23,7 @@ public class GroupController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/getGroups")
     public List<GroupDto> getGroups() {
-        return groupMapper.mapToGroupDto(service.getAllGroups());
+        return groupMapper.mapToGroupListDto(service.getAllGroups());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getGroup")
@@ -36,8 +36,8 @@ public class GroupController {
         service.saveGroup(groupMapper.mapToGroup(groupDto));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteGroup")
-    public void deleteGroup(@RequestParam Long groupId) {
+    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteGroup/{groupId}")
+    public void deleteGroup(@PathVariable("groupId") Long groupId) {
         service.deleteGroup(groupId);
     }
 

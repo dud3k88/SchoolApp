@@ -26,4 +26,11 @@ public class Child {
     @JoinColumn(name = "child_group")
     private Group group;
 
+    public Child(String firstName, String secondName, int yearOfBirth, Parent parent, Group group) {
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.yearOfBirth = yearOfBirth;
+        this.parent = parent;
+        this.group = group;
+    }
 }

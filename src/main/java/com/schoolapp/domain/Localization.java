@@ -24,5 +24,8 @@ public class Localization {
     private Long id;
     private String localizationName;
 
+    public Localization(String localizationName) {
+        this.localizationName = localizationName;
+    }
 }
 

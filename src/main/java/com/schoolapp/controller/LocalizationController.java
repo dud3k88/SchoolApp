@@ -30,8 +30,8 @@ public class LocalizationController {
         return localizationMapper.mapToLocalizationDto(service.getLocalization(localizationId));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteLocalization")
-    public void deleteLocalization(@RequestParam Long localizationId) {
+    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteLocalization/{localizationId}")
+    public void deleteLocalization(@PathVariable("localizationId") Long localizationId) {
         service.deleteLocalization(localizationId);
     }
 

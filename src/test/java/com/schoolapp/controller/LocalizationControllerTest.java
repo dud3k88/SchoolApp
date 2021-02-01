@@ -1,12 +1,10 @@
 package com.schoolapp.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.schoolapp.domain.GroupDto;
-import com.schoolapp.domain.Localization;
 import com.schoolapp.domain.LocalizationDto;
-import com.schoolapp.domain.ParentDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -14,88 +12,85 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(GroupController.class)
-public class GroupControllerTest {
+@WebMvcTest(LocalizationController.class)
+public class LocalizationControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private GroupController groupController;
+    private LocalizationController localizationController;
 
     @Test
-    public void shouldFetchEmptyGroupList() throws Exception {
+    public void shouldFetchEmptyLocalizationList() throws Exception {
         //Given
-        List<GroupDto> groupDtoList = new ArrayList<>();
-        when(groupController.getGroups()).thenReturn(groupDtoList);
+        List<LocalizationDto> localizationDtoList = new ArrayList<>();
+        when(localizationController.getLocalizations()).thenReturn(localizationDtoList);
 
         //When & Then
-        mockMvc.perform(get("/school/groups/getGroups")
+        mockMvc.perform(get("/school/localization/getLocalizations")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(200))
                 .andExpect(jsonPath("$", hasSize(0)));
     }
 
     @Test
-    public void shouldFetchGroupList() throws Exception {
+    public void shouldFetchLocalizationList() throws Exception {
         //Given
-        Localization localization = new Localization(1L, "lok1");
+        List<LocalizationDto> localizationDtoList = new ArrayList<>();
+        localizationDtoList.add(new LocalizationDto(1L, "School1"));
 
-        List<GroupDto> groupDtoList = new ArrayList<>();
-        groupDtoList.add(new GroupDto(1L,"GroupName", 2010, 2020, localization));
-
-        when(groupController.getGroups()).thenReturn(groupDtoList);
+        when(localizationController.getLocalizations()).thenReturn(localizationDtoList);
 
         //When & Then
-        mockMvc.perform(get("/school/groups/getGroups").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/school/localization/getLocalizations").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].id", is(1)))
-                .andExpect(jsonPath("$[0].groupName", is("GroupName")))
-                .andExpect(jsonPath("$[0].minYearOfBirth", is(2010)))
-                .andExpect(jsonPath("$[0].maxYearOfBirth", is(2020)));
+                .andExpect(jsonPath("$[0].localizationName", is("School1")));
     }
 
     @Test
-    public void shouldCreateGroupDto() throws Exception {
-
-        Localization localization = new Localization(1L, "lok1");
-
-
+    public void shouldCreateLocalizationDto() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
-                .post("/school/groups/createGroup")
-                .content(asJasonString(new GroupDto(1L,"GroupName", 2010, 2020, localization)))
+                .post("/school/localization/createLocalization")
+                .content(asJasonString(new LocalizationDto(1L, "Localization1")))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void shouldDeleteGroupDto() throws Exception {
+    public void shouldDeleteLocalizationDto() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders
-                .delete("/school/groups/deleteGroup/{groupId}", 1))
+        .delete("/school/localization/deleteLocalization/{localizationId}", 1))
                 .andExpect(status().isOk());
     }
+
 
 
     public static String asJasonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw  new RuntimeException(e);
         }
     }
 }

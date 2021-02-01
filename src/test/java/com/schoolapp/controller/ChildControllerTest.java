@@ -1,10 +1,7 @@
 package com.schoolapp.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.schoolapp.domain.GroupDto;
-import com.schoolapp.domain.Localization;
-import com.schoolapp.domain.LocalizationDto;
-import com.schoolapp.domain.ParentDto;
+import com.schoolapp.domain.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,66 +24,76 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(GroupController.class)
-public class GroupControllerTest {
+@WebMvcTest(ChildDto.class)
+public class ChildControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private GroupController groupController;
+    private ChildController childController;
 
     @Test
-    public void shouldFetchEmptyGroupList() throws Exception {
+    public void shouldFetchEmptyChildList() throws Exception {
         //Given
-        List<GroupDto> groupDtoList = new ArrayList<>();
-        when(groupController.getGroups()).thenReturn(groupDtoList);
+        List<ChildDto> childDtoList = new ArrayList<>();
+        when(childController.getAllChildren()).thenReturn(childDtoList);
 
         //When & Then
-        mockMvc.perform(get("/school/groups/getGroups")
+        mockMvc.perform(get("/school/children/getChildren")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(200))
                 .andExpect(jsonPath("$", hasSize(0)));
     }
 
     @Test
-    public void shouldFetchGroupList() throws Exception {
+    public void shouldFetchChildrenList() throws Exception {
         //Given
         Localization localization = new Localization(1L, "lok1");
+        Group group = new Group(1L, "Name", 2010, 2020, localization);
+        Parent parent = new Parent("Jan", "Nowak", "email");
 
-        List<GroupDto> groupDtoList = new ArrayList<>();
-        groupDtoList.add(new GroupDto(1L,"GroupName", 2010, 2020, localization));
+        List<ChildDto> childDtoList = new ArrayList<>();
+        childDtoList.add(new ChildDto(1L, "Name", "Name1", 2020, parent, group));
 
-        when(groupController.getGroups()).thenReturn(groupDtoList);
+        when(childController.getAllChildren()).thenReturn(childDtoList);
 
         //When & Then
-        mockMvc.perform(get("/school/groups/getGroups").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/school/children/getChildren").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].id", is(1)))
-                .andExpect(jsonPath("$[0].groupName", is("GroupName")))
-                .andExpect(jsonPath("$[0].minYearOfBirth", is(2010)))
-                .andExpect(jsonPath("$[0].maxYearOfBirth", is(2020)));
+                .andExpect(jsonPath("$[0].firstName", is("Name")))
+                .andExpect(jsonPath("$[0].secondName", is("Name1")))
+                .andExpect(jsonPath("$[0].yearOfBirth", is(2020)));
     }
 
     @Test
-    public void shouldCreateGroupDto() throws Exception {
+    public void shouldCreateChildDto() throws Exception {
 
         Localization localization = new Localization(1L, "lok1");
+        Group group = new Group(1L, "Name", 2010, 2020, localization);
+        Parent parent = new Parent("Jan", "Nowak", "email");
 
 
         mockMvc.perform(MockMvcRequestBuilders
-                .post("/school/groups/createGroup")
-                .content(asJasonString(new GroupDto(1L,"GroupName", 2010, 2020, localization)))
+                .post("/school/children/createChild")
+                .content(asJasonString(new ChildDto(
+                        1L,
+                        "Name",
+                        "Name1",
+                        2020,
+                        parent,
+                        group)))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void shouldDeleteGroupDto() throws Exception {
+    public void shouldDeleteChildDto() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders
-                .delete("/school/groups/deleteGroup/{groupId}", 1))
+                .delete("/school/children/deleteChild/{childId}", 1))
                 .andExpect(status().isOk());
     }
 
@@ -98,4 +105,6 @@ public class GroupControllerTest {
             throw new RuntimeException(e);
         }
     }
+
 }
+

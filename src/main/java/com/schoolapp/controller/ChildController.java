@@ -35,8 +35,8 @@ public class ChildController {
         service.saveChild(childMapper.mapToChild(childDto));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteChild")
-    public void deleteChild(@RequestParam Long childId) {
+    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteChild/{childId}")
+    public void deleteChild(@PathVariable("childId") Long childId) {
         service.deleteChild(childId);
     }
 
