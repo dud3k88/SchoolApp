@@ -20,6 +20,7 @@ dependencies {
     //compile ('mysql:mysql-connector-java')
     compile ('org.postgresql:postgresql')
     compile ('com.google.code.gson:gson:2.8.2')
+    implementation 'org.json:json:20171018'
 
     annotationProcessor('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
