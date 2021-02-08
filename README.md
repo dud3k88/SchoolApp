@@ -1,23 +1,23 @@
 # SchoolApp - backEnd
 
-Link do Frontendu: https://github.com/dud3k88/schoolappfront
-Ostatni commit Frontendu: https://github.com/dud3k88/schoolappfront/commit/9dc22fa0b242e4acded6ecdc6202379c15d42fa3
+Frontend link: https://github.com/dud3k88/schoolappfront
+Last Frontend commit: https://github.com/dud3k88/schoolappfront/commit/9dc22fa0b242e4acded6ecdc6202379c15d42fa3
 
-Backend: 
-Aplikacja służąca do:
-- tworzenia lokazliacji czyli miejsc w których powstaną nowe grupy (np, Szkoła Podstawowa nr 1)
-- tworzenia grup w utworzonej lokalizacji (np grupa dzieci w wkieku 6-7 w Szkole Podstawowej nr1)
-- analogicznie tworzenie Rodzica (Parent) 
-- tworzenie uczesnitków czyli dzieci które mają swoich rodziców oraz są przypisane do swoich grup.
+Backend:
+Application for:
+- creating locations, i.e. places where new groups will arise (e.g. Primary School No. 1)
+- creating groups in a created location (e.g. a group of children in 6-7 in Primary School No. 1)
+- similarly creating a Parent
+- creating hairstyles, i.e. children who have their parents and are assigned to their groups.
 
-Ciężko było mi wybrać aplikacji zewnętrzne API więc dodałem:
-- informacje o pogodzie we Wrocławiu
-- kurs Euro (wiem że to nie ma nic wspónego :))
+It was hard for me to choose external API applications so I added:
+- information about the weather in Wrocław
+- Euro rate (I know that it has nothing to do :))
 
-Shedulera niestetety nie zdążyłem napisać
+Unfortunately, I did not have time to write a Sheduler
 
-Aplikacja pokryta testami w 63%
+63% tested application
 
-Zapis do bazy w wartości większej niż kryterium zaliczenia projektu (10)
+Entry in the database in a value greater than the criterion for passing the project (10)
 
-Warstwe widoku nie dokońca dopracowana ale działa :)
+The view layer is not completely polished, but it works :) 
